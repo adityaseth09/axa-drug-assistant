@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import api_get from './API.js'
+import api from './API.js'
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -21,15 +21,13 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit(event) {
-        api_get('/patient/items').then(ans => (
-            alert('A name was submitted: ' + this.state.name)
-        ))
+        api.login(this.state.name, this.state.password).then(ev => console.log(ev))
         event.preventDefault()
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+             <form onSubmit={this.handleSubmit}>
               <label>
                 Name:
                 <input type="text" value={this.state.name} onChange={this.handleChange} />

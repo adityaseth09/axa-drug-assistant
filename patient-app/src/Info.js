@@ -1,11 +1,11 @@
 import React from 'react'
 import Menu from './Menu'
 
-const Emergency = () => (
+const Info = () => (
         <div>
         <Menu/>
         <p>Emergency</p>
         </div>
 )
 
-export default Emergency
+export default Info

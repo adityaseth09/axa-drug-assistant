@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './Menu.css'
 
-const menuItems = [
+
+const defaultMenuItems = [
     {name: 'Home', action:'/'},
-    {name: 'Emergency', action:'/emergency/'},
-    {name: 'Pharmacy', action:'/pharmacy/'},
-    {name: 'Reminders', action:'/reminders/'},
-    {name: 'Adherence', action:'/adherence/'},
     {name: 'Filler', action:'/filler/'},
+    {name: 'Info', action:'/info/'},
+    {name: 'Adherence', action:'/adherence/'},
+    {name: 'Emergency', action:'/emergency/'}
 ]
+
 
 class Menu extends Component {
     _handleClick(menuItem) {
@@ -19,7 +20,7 @@ class Menu extends Component {
     render () {
         return (
               <nav className="demo-buttons">
-                {menuItems.map((item) => (
+                {(this.props.menuItems || defaultMenuItems).map((item) => (
                     <Link key={item.action} to={item.action}
                           className={(this.state === null ? item === "Home" : this.state.active === item) ? "current-demo" : ""}
                           onClick={this._handleClick.bind(this, item)}>{item.name}</Link>
