@@ -16,7 +16,7 @@ cursor.execute(create_table)
 create_table = "CREATE TABLE IF NOT EXISTS conditions (id INTEGER PRIMARY KEY, name text)"
 cursor.execute(create_table)
 
-create_table = "CREATE TABLE IF NOT EXISTS drugs (id INTEGER PRIMARY KEY, name text)"
+create_table = "CREATE TABLE IF NOT EXISTS drugs (id INTEGER PRIMARY KEY, name text, emergency INTEGER)"
 cursor.execute(create_table)
 
 create_table = "CREATE TABLE IF NOT EXISTS patient_allergies (patient_id, allergy_id)"

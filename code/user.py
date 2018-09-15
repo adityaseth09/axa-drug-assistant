@@ -166,6 +166,16 @@ class Allergy:
         connection.close()
         return answers
 
+    @classmethod
+    def allergies_all(cls):
+        connection = sqlite3.connect('data.db')
+        cursor = connection.cursor()
+        query = "SELECT a.id, a.name FROM allergy a"
+        result = cursor.execute(query)
+        answers = [cls(*row) for row in result.fetchall()]
+        connection.close()
+        return answers
+
 
 class AllergyList(Resource):
     parser = reqparse.RequestParser()
@@ -189,7 +199,6 @@ class AllergyList(Resource):
     def post(self, patient_id):
         data = AllergyList.parser.parse_args()
 
-
         connection = sqlite3.connect('data.db')
 
         cursor = connection.cursor()
@@ -208,16 +217,35 @@ class AllergyList(Resource):
         return {'message': "Patient Allergy created successfully"}, 201
 
 
+class AllergyListAll(Resource):
+    def get(self):
+        return [{
+            key: getattr(allergy, key)
+            for key in ('id', 'name')
+        } for allergy in Allergy.allergies_all()]
+
+
 class Drug:
-    def __init__(self, _id, name):
+    def __init__(self, _id, name, emergency):
         self.id = _id
         self.name = name
+        self.emergency = emergency
+
+    @classmethod
+    def drugs_all(cls):
+        connection = sqlite3.connect('data.db')
+        cursor = connection.cursor()
+        query = "SELECT d.id, d.name, d.emergency FROM drugs"
+        result = cursor.execute(query)
+        answers = [cls(*row) for row in result.fetchall()]
+        connection.close()
+        return answers
 
     @classmethod
     def drugs_of_user(cls, uid):
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
-        query = "SELECT d.id, d.name FROM drugs d, patient_drugs pd WHERE d.id=pd.drug_id AND pd.patient_id=?"
+        query = "SELECT d.id, d.name, d.emergency FROM drugs d, patient_drugs pd WHERE d.id=pd.drug_id AND pd.patient_id=?"
         result = cursor.execute(query, (uid,))
         answers = [cls(*row) for row in result.fetchall()]
         connection.close()
@@ -229,8 +257,17 @@ class DrugList(Resource):
     def get(self, id):
         return [{
             key: getattr(drug, key)
-            for key in ('id', 'name')
+            for key in ('id', 'name', 'emergency')
         } for drug in Drug.drugs_of_user(id)]
+
+
+class DrugListAll(Resource):
+    @jwt_required()
+    def get(self):
+        return [{
+            key: getattr(drug, key)
+            for key in ('id', 'name', 'emergency')
+        } for drug in Drug.drugs_all()]
 
 
 class Condition:
@@ -248,6 +285,16 @@ class Condition:
         connection.close()
         return answers
 
+    @classmethod
+    def conditions_all(cls):
+        connection = sqlite3.connect('data.db')
+        cursor = connection.cursor()
+        query = "SELECT c.id, c.name FROM conditions c"
+        result = cursor.execute(query)
+        answers = [cls(*row) for row in result.fetchall()]
+        connection.close()
+        return answers
+
 
 class ConditionList(Resource):
     @jwt_required()
@@ -256,3 +303,12 @@ class ConditionList(Resource):
             key: getattr(cond, key)
             for key in ('id', 'name')
         } for cond in Condition.conditions_of_user(id)]
+
+
+class ConditionListAll(Resource):
+    @jwt_required()
+    def get(self):
+        return [{
+            key: getattr(cond, key)
+            for key in ('id', 'name')
+        } for cond in Condition.conditions_all()]

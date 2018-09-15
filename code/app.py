@@ -19,6 +19,9 @@ api.add_resource(Patient, '/patient/<int:id>')
 api.add_resource(AllergyList, '/patient/<int:id>/allergies')
 api.add_resource(DrugList, '/patient/<int:id>/drugs')
 api.add_resource(ConditionList, '/patient/<int:id>/conditions')
+api.add_resource(AllergyListAll, '/allergies')
+api.add_resource(DrugListAll, '/drugs')
+api.add_resource(ConditionListAll, '/conditions')
 api.add_resource(UserRegister, '/register')
 
 if __name__== '__main__':
