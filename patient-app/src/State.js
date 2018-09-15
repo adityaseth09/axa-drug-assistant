@@ -1,4 +1,4 @@
-var state = { access_token: null }  // 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzcwNDU3MzUsImlhdCI6MTUzNzA0NTQzNSwibmJmIjoxNTM3MDQ1NDM1LCJpZGVudGl0eSI6MX0.HcyQ-cTlt_TBqM4jLNhpUyIc1FnXbYBFMy3_OawxQF0'
+var state = { access_token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MzcwNDc0MDYsImlhdCI6MTUzNzA0NzEwNiwibmJmIjoxNTM3MDQ3MTA2LCJpZGVudGl0eSI6MX0.k089PwN5Nn8edZhbbwXbckvmHtpxtPieBe3ODWqo8g4' }
 
 export function getState() {
     return state;
