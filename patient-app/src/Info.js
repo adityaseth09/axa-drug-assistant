@@ -1,6 +1,7 @@
 import React from 'react'
 import Menu from './Menu'
 import api from './API'
+import axa from './AxaApi'
 
 function Info() {
     const ans = (
@@ -20,6 +21,9 @@ function Info() {
         document.getElementById("info_allergies").replaceChild(info.allergies)
         document.getElementById("info_conditions").replaceChild(info.conditions)
         document.getElementById("info_drugs").replaceChild(info.drugs)
+    })
+    axa.get_drug('/33124').then(function (info) {
+        document.getElementById("info_allergies").replaceChild(JSON.toString(info))
     })
     return ans;
 }

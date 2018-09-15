@@ -4,7 +4,7 @@ from flask_jwt import JWT, jwt_required
 from flask_cors import CORS
 
 from security import authenticate,identity
-
+from user import UserRegister
 
 axa_key = 'mountainous motion'
 
@@ -35,22 +35,26 @@ class Patient(Resource):
         global patients
         patients = list(filter(lambda x: x['id'] !=id, patients))
 
+
 class PatientList(Resource):
     def get(self):
-        return{'item':items}
+        return{'patients':patients}
 
-@jwt_required()
-def get_info(self, id):
-    return {
-        'drugs': [{'id': '33124', 'emergency': false],
-        'conditions': ['pregnant', 'bipolar'],
-        '': ['pregnant', 'bipolar'],
-    }
 
-api.add_resource(PatientList, '/items')
+class Allergy(Resource):
+    def post(self):
+        data = request.get_json()
+        allergy = {'id': id, 'name': data['name']}
+        patients.append(patient)
+
+
+api.add_resource(PatientList, '/patients')
 api.add_resource(Patient, '/patient/<int:id>')
-api.add_resource(Patient, '/patient/<int:id>/info/')
-
+api.add_resource(Allergy, '/<int:patient_id>/allergy')
+api.add_resource(UserRegister, '/register')
 
 
 app.run(port=5001, debug=True)
+
+
+

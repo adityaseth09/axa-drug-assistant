@@ -5,10 +5,10 @@ import './Menu.css'
 
 const defaultMenuItems = [
     {name: 'Home', action:'/'},
-    {name: 'Filler', action:'/filler/'},
-    {name: 'Info', action:'/info/'},
-    {name: 'Adherence', action:'/adherence/'},
-    {name: 'Emergency', action:'/emergency/'}
+//    {name: 'Filler', action:'/filler/'},
+//    {name: 'Info', action:'/info/'},
+//    {name: 'Adherence', action:'/adherence/'},
+//    {name: 'Emergency', action:'/emergency/'}
 ]
 
 
