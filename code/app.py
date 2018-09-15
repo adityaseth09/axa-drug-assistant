@@ -4,7 +4,7 @@ from flask_jwt import JWT, jwt_required
 from flask_cors import CORS
 
 from security import authenticate,identity
-from user import UserRegister, PatientList, Patient, AllergyList, DrugList, ConditionList
+from user import AllergyListAll, ConditionListAll, DrugListAll, UserData, UserRegister, PatientList, Patient, AllergyList, DrugList, ConditionList
 
 axa_key = 'mountainous motion'
 
@@ -23,6 +23,7 @@ api.add_resource(AllergyListAll, '/allergies')
 api.add_resource(DrugListAll, '/drugs')
 api.add_resource(ConditionListAll, '/conditions')
 api.add_resource(UserRegister, '/register')
+api.add_resource(UserData, '/getuserid/<string:username>')
 
 if __name__== '__main__':
     app.run(port=5001, debug=True)
