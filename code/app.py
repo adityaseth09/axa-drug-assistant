@@ -39,8 +39,16 @@ class PatientList(Resource):
     def get(self):
         return{'item':items}
 
+class PatientInfo(Resource):
+    def get(self):
+        return {
+            'drugs': [{'id': '33124', 'emergency': false}, {'id': '33130', 'emergency': true}],
+            'conditions': ['pregnant', 'bipolar'],
+        }
+
 api.add_resource(PatientList, '/items')
 api.add_resource(Patient, '/patient/<int:id>')
+api.add_resource(PatientInfo, '/patient/<int:id>/info/')
 
 
 
