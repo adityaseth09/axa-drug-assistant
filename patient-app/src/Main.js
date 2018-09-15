@@ -1,7 +1,7 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Home from './Home';
-import Emergency from './Emergency';
+import React from 'react'
+import { Switch, Route } from 'react-router-dom'
+import Home from './Home'
+import Emergency from './Emergency'
 
 const Main = () => (
   <main>
@@ -10,6 +10,6 @@ const Main = () => (
       <Route path='/emergency' component={Emergency}/>
     </Switch>
   </main>
-);
+)
 
-export default Main;
+export default Main

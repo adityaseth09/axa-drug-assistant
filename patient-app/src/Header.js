@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import { Link } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
+import logo from './logo.svg'
+import './App.css'
 
 class Header extends Component {
     render () {
@@ -14,8 +14,8 @@ class Header extends Component {
                 <h1 className="App-title">Drug Assistent</h1>
               </header>
             </div>
-        );
+        )
     }
 }
 
-export default Header;
+export default Header

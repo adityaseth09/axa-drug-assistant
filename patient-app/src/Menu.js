@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import logo from './logo.svg';
-import './Menu.css';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import logo from './logo.svg'
+import './Menu.css'
 
 const menuItems = [
     {name: 'Home', action:'/'},
@@ -10,11 +10,11 @@ const menuItems = [
     {name: 'Reminders', action:'/reminders/'},
     {name: 'Adherence', action:'/adherence/'},
     {name: 'Filler', action:'/adherence/'},
-];
+]
 
 class Menu extends Component {
     _handleClick(menuItem) { 
-        this.setState({ active: menuItem });
+        this.setState({ active: menuItem })
     }
 
     render () {
@@ -26,8 +26,8 @@ class Menu extends Component {
                           onClick={this._handleClick.bind(this, item)}>{item.name}</Link>
                 ))}
               </nav>
-        );
+        )
     }
 }
 
-export default Menu;
+export default Menu
