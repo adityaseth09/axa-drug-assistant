@@ -16,9 +16,9 @@ jwt = JWT(app, authenticate, identity)  # /auth
 
 api.add_resource(PatientList, '/patients')
 api.add_resource(Patient, '/patient/<int:id>')
-api.add_resource(AllergyList, '/patient/<int:patient_id>/allergies')
-api.add_resource(DrugList, '/patient/<int:patient_id>/drugs')
-api.add_resource(ConditionList, '/patient/<int:patient_id>/conditions1')
+api.add_resource(AllergyList, '/patient/<int:id>/allergies')
+api.add_resource(DrugList, '/patient/<int:id>/drugs')
+api.add_resource(ConditionList, '/patient/<int:id>/conditions')
 
 
 if __name__== '__main__':
