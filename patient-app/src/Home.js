@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import { Link } from 'react-router-dom'
-import { BrowserRouter } from 'react-router-dom'
-import logo from './logo.svg'
+import Menu from './Menu'
 
 class Home extends Component {
     render () {
-        return (
-           <p>Your adherence score: 10/10</p>
+        return (<div>
+                <p>Your adherence score: 10/10</p>
+                <p>Your second score: 10/10</p>
+                <p>Call to action: GET THE DRUG NOW</p>
+                <Menu menuItems={[
+                    {name: 'Filler', action:'/filler/'},
+                    {name: 'Information', action:'/information/'},
+                    {name: 'Adherence', action:'/adherence/'},
+                    {name: 'Emergency', action:'/emergency/'}]}/>
+                </div>
         )
     }
 }

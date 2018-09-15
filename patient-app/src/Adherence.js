@@ -1,11 +1,11 @@
 import React from 'react'
 import Menu from './Menu'
 
-const Emergency = () => (
+const Adherence = () => (
         <div>
         <Menu/>
-        <p>Emergency</p>
+        <p>Adherence</p>
         </div>
 )
 
-export default Emergency
+export default Adherence
