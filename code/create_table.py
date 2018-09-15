@@ -28,8 +28,5 @@ cursor.execute(create_table)
 create_table = "CREATE TABLE IF NOT EXISTS patient_drugs (patient_id, drug_id)"
 cursor.execute(create_table)
 
-
-cursor.execute(create_table)
-
 connection.commit()
 connection.close()

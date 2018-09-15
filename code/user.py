@@ -142,3 +142,69 @@ class PatientList(Resource):
         connection.close()
 
         return data
+
+
+class Allergy:
+    def __init__(self, _id, name):
+        self.id = _id
+        self.name = name
+
+    @classmethod
+    def allergies_of_user(cls, uid):
+        connection = sqlite3.connect('data.db')
+        cursor = connection.cursor()
+        query = "SELECT a.id, a.name FROM allergy a, patient_allergies pa WHERE a.id=pa.allergy_id AND pa.patient_id=?"
+        result = cursor.execute(query, (uid,))
+        answers = [cls(*row) for row in result.fetchall()]
+        connection.close()
+        return answers
+
+
+class AllergyList
+    @jwt_required()
+    def get(self, id):
+        return Allergy.allergies_of_user(id)
+
+
+class Drug:
+    def __init__(self, _id, name):
+        self.id = _id
+        self.name = name
+
+    @classmethod
+    def drugs_of_user(cls, uid):
+        connection = sqlite3.connect('data.db')
+        cursor = connection.cursor()
+        query = "SELECT d.id, d.name FROM drugs d, patient_drugs pd WHERE d.id=pd.drug_id AND pd.patient_id=?"
+        result = cursor.execute(query, (uid,))
+        answers = [cls(*row) for row in result.fetchall()]
+        connection.close()
+        return answers
+
+
+class DrugList
+    @jwt_required()
+    def get(self, id):
+        return Drug.drugs_of_user(id)
+
+
+class Condition:
+    def __init__(self, _id, name):
+        self.id = _id
+        self.name = name
+
+    @classmethod
+    def conditions_of_user(cls, uid):
+        connection = sqlite3.connect('data.db')
+        cursor = connection.cursor()
+        query = "SELECT c.id, c.name FROM condition c, patient_conditions pc WHERE c.id=pc.condition_id AND pc.patient_id=?"
+        result = cursor.execute(query, (uid,))
+        answers = [cls(*row) for row in result.fetchall()]
+        connection.close()
+        return answers
+
+
+class ConditionList
+    @jwt_required()
+    def get(self, id):
+        return Condition.conditions_of_user(id)
