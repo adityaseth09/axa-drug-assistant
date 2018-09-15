@@ -163,7 +163,10 @@ class Allergy:
 class AllergyList(Resource):
     @jwt_required()
     def get(self, id):
-        return Allergy.allergies_of_user(id)
+        return [{
+            key: getattr(allergy, key)
+            for key in ('id', 'name')
+        } for allergy in Allergy.allergies_of_user(id)]
 
 
 class Drug:
@@ -185,7 +188,10 @@ class Drug:
 class DrugList(Resource):
     @jwt_required()
     def get(self, id):
-        return Drug.drugs_of_user(id)
+        return [{
+            key: getattr(drug, key)
+            for key in ('id', 'name')
+        } for drug in Drug.drugs_of_user(id)]
 
 
 class Condition:
@@ -197,7 +203,7 @@ class Condition:
     def conditions_of_user(cls, uid):
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
-        query = "SELECT c.id, c.name FROM condition c, patient_conditions pc WHERE c.id=pc.condition_id AND pc.patient_id=?"
+        query = "SELECT c.id, c.name FROM conditions c, patient_conditions pc WHERE c.id=pc.condition_id AND pc.patient_id=?"
         result = cursor.execute(query, (uid,))
         answers = [cls(*row) for row in result.fetchall()]
         connection.close()
@@ -207,4 +213,7 @@ class Condition:
 class ConditionList(Resource):
     @jwt_required()
     def get(self, id):
-        return Condition.conditions_of_user(id)
+        return [{
+            key: getattr(cond, key)
+            for key in ('id', 'name')
+        } for cond in Condition.conditions_of_user(id)]
