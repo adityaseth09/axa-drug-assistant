@@ -8,12 +8,12 @@ function get(url) {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'stupid space',
+            'Accept-Language': 'de',
         },
         crossdomain: true,
-    }).then(res => JSON.parse(res))
-        .catch(function(error) {
-            console.log(url, error);
-        });
+    }).catch(function(error) {
+        console.log(url, error);
+    });
 }
 
 function get_drug(url) {

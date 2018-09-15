@@ -11,10 +11,9 @@ function get(url) {
             'Authorization': 'JWT ' + getAccessToken(),
         },
         crossdomain: true,
-    }).then(res => JSON.parse(res))
-        .catch(function(error) {
-            console.log(url, error);
-        });
+    }).catch(function(error) {
+        console.log(url, error);
+    });
 }
 
 function get_patient(url) {
@@ -32,7 +31,7 @@ function login(username, password) {
                      ).catch(function(error) {
                          console.log("auth error:", error)
                      }).then(function (res) {
-                         console.log("oauth:",res)
+                         console.log("auth token:",res)
                          setAccessToken(res.data.access_token)
                      })
 }

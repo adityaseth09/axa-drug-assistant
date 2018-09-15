@@ -16,15 +16,18 @@ function Info() {
           <div id="info_drugs">Loading ...</div>
         </div>
     )
-    api.get_patient('/1').then(function (info) {
-        console.log(info)
-        document.getElementById("info_allergies").replaceChild(info.allergies)
-        document.getElementById("info_conditions").replaceChild(info.conditions)
-        document.getElementById("info_drugs").replaceChild(info.drugs)
-    })
+    //api.get_patient('/1').then(function (info) {
+    //    console.log(info)
+    //    //document.getElementById("info_allergies").replaceChild(info.allergies)
+    //    console.log("pre",document.getElementById("info_conditions"))
+    //    document.getElementById("info_conditions").replaceChild(info.conditions)
+    //    console.log("post",document.getElementById("info_conditions"))
+    //    //document.getElementById("info_drugs").replaceChild(info.drugs)
+    //}).catch(err => console.log("err1",err))
     axa.get_drug('/33124').then(function (info) {
-        document.getElementById("info_allergies").replaceChild(JSON.toString(info))
-    })
+        console.log("replace w/", JSON.stringify(info) )
+        document.getElementById("info_allergies").innerhtml = "<p>" + JSON.stringify(info) + "</p>"
+    }).catch(err => console.log("errx",err))
     return ans;
 }
 
