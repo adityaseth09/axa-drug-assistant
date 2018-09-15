@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import logo from './logo.svg'
 import './Menu.css'
 
 const menuItems = [
@@ -9,11 +8,11 @@ const menuItems = [
     {name: 'Pharmacy', action:'/pharmacy/'},
     {name: 'Reminders', action:'/reminders/'},
     {name: 'Adherence', action:'/adherence/'},
-    {name: 'Filler', action:'/adherence/'},
+    {name: 'Filler', action:'/filler/'},
 ]
 
 class Menu extends Component {
-    _handleClick(menuItem) { 
+    _handleClick(menuItem) {
         this.setState({ active: menuItem })
     }
 
@@ -22,7 +21,7 @@ class Menu extends Component {
               <nav className="demo-buttons">
                 {menuItems.map((item) => (
                     <Link key={item.action} to={item.action}
-                          className={(this.state === null ? item === "Home" : this.state.active === item) ? "current-demo" : ""} 
+                          className={(this.state === null ? item === "Home" : this.state.active === item) ? "current-demo" : ""}
                           onClick={this._handleClick.bind(this, item)}>{item.name}</Link>
                 ))}
               </nav>

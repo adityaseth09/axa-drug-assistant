@@ -43,6 +43,3 @@ api.add_resource(Patient, '/patient/<int:id>')
 
 
 app.run(port=5001, debug=True)
-
-
-
