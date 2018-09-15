@@ -133,4 +133,12 @@ class Patient(Resource):
 
 class PatientList(Resource):
     def get(self):
-        return{'patients':patients}
+        connection = sqlite3.connect('data.db')
+
+        cursor = connection.cursor()
+        query = "SELECT * FROM users where type_of_user='patient'"
+        result = cursor.execute(query)
+        data = {'patients':result.fetchall()}
+        connection.close()
+
+        return data
