@@ -9,6 +9,5 @@ export function setAccessToken(text) {
 }
 
 export function getAccessToken() {
-    return 1
     return state.access_token
 }

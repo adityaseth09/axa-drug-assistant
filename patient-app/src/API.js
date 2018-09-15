@@ -4,33 +4,37 @@ import axios from 'axios'
 axios.defaults.headers.common['Accept'] = 'application/json'
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 
-function get(url, data) {
-    return axios.get("http://localhost:5001" + url, {
-        body: data,
+function get(url) {
+    return axios.get("http://129.213.156.32:5005" + url, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'JWT ' + getAccessToken(),
+        },
         crossdomain: true,
-        method: 'POST',
-    }).then(function (res) {
-        console.log("fetchedit", res)
-        return res
-    }).then(res => res.json())
+    }).then(res => JSON.parse(res))
         .catch(function(error) {
             console.log(url, error);
         });
 }
 
-function get_patient(url, data) {
-    return get("/patient/" + getAccessToken() + url, data)
+function get_patient(url) {
+    return get("/patient" + url)
 }
 
 function login(username, password) {
-    console.log("auth")
-    return get("/auth", {
-        "username": username,
-        "password": password
-    }).then(function (res) {
-        console.log("oauth:",res)
-        setAccessToken(res.access_token)
-    })
+    return axios.post("http://129.213.156.32:5005/auth",
+                      { "username": username,
+                        "password": password
+                      }, {
+                          headers: { 'Content-Type': 'application/json' },
+                          crossdomain: true,
+                      }
+                     ).catch(function(error) {
+                         console.log("auth error:", error)
+                     }).then(function (res) {
+                         console.log("oauth:",res)
+                         setAccessToken(res.data.access_token)
+                     })
 }
 
 export default {login: login, get: get, get_patient: get_patient}

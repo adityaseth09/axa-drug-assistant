@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { getAccessToken } from './State'
 
 import api from './API.js'
 
@@ -21,12 +23,17 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit(event) {
-        api.login(this.state.name, this.state.password).then(ev => console.log(ev))
+        api.login(this.state.name, this.state.password).then(function() {
+            console.log("access token:", getAccessToken())
+            document.getElementById("goto_home").click()
+        })
         event.preventDefault()
     }
 
     render() {
         return (
+            <div>
+             <Link to="/" id="goto_home"/>
              <form onSubmit={this.handleSubmit}>
               <label>
                 Name:
@@ -38,6 +45,7 @@ class LoginForm extends React.Component {
               </label>
               <input type="submit" value="Submit" />
             </form>
+            </div>
         )
     }
 }

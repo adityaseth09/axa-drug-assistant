@@ -1,16 +1,11 @@
 from user import User
 from werkzeug.security import safe_str_cmp
 
-users = [
-    User(1,'bob','asdf')
-]
-
-username_mapping = {u.username: u for u in users}
-userid_mapping = {u.id: u for u in users}
+from fakedb import get_user_by_username
 
 
 def authenticate(username, password):
-    user = username_mapping.get(username, None)
+    user = get_user_by_username(username)
     if user and safe_str_cmp(user.password, password):
         return user
 
@@ -18,4 +13,3 @@ def authenticate(username, password):
 def identity(payload):
     user_id = payload['identity']
     return userid_mapping.get(user_id, None)
-

@@ -15,7 +15,8 @@ function Info() {
           <div id="info_drugs">Loading ...</div>
         </div>
     )
-    api.get_patient('/info').then(function (info) {
+    api.get_patient('/1').then(function (info) {
+        console.log(info)
         document.getElementById("info_allergies").replaceChild(info.allergies)
         document.getElementById("info_conditions").replaceChild(info.conditions)
         document.getElementById("info_drugs").replaceChild(info.drugs)
