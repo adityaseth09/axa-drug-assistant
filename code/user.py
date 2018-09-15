@@ -98,9 +98,16 @@ class UserRegister(Resource):
          )
 
         connection.commit()
+        query = "SELECT id FROM users where username=?"
+        result = cursor.execute(query, (data['username'],))
+        row = result.fetchone()
         connection.close()
 
-        return {'message': "User created successfully"}, 201
+        return {
+                    'id': row[0],
+                    'message': "User with id: " + str(row[0]) + " created successfully",
+               }, 201
+
 
 
 class Patient(Resource):
@@ -161,12 +168,44 @@ class Allergy:
 
 
 class AllergyList(Resource):
-    @jwt_required()
+    parser = reqparse.RequestParser()
+    parser.add_argument('patient_id',
+                        type=str,
+                        required=True,
+                        help="This field cannot be blank."
+                        )
+    parser.add_argument('allergy_id',
+                        type=str,
+                        required=True,
+                        help="This field cannot be blank."
+                        )
+
     def get(self, id):
         return [{
             key: getattr(allergy, key)
             for key in ('id', 'name')
         } for allergy in Allergy.allergies_of_user(id)]
+
+    def post(self, patient_id):
+        data = AllergyList.parser.parse_args()
+
+
+        connection = sqlite3.connect('data.db')
+
+        cursor = connection.cursor()
+
+        query = "INSERT INTO patient_allergies VALUES (?, ?)"
+        cursor.execute(
+            query, (
+                data['allergy_id'],
+                data['patient_id']
+            )
+        )
+
+        connection.commit()
+        connection.close()
+
+        return {'message': "Patient Allergy created successfully"}, 201
 
 
 class Drug:
