@@ -160,7 +160,7 @@ class Allergy:
         return answers
 
 
-class AllergyList
+class AllergyList:
     @jwt_required()
     def get(self, id):
         return Allergy.allergies_of_user(id)
@@ -182,7 +182,7 @@ class Drug:
         return answers
 
 
-class DrugList
+class DrugList:
     @jwt_required()
     def get(self, id):
         return Drug.drugs_of_user(id)
@@ -204,7 +204,7 @@ class Condition:
         return answers
 
 
-class ConditionList
+class ConditionList:
     @jwt_required()
     def get(self, id):
         return Condition.conditions_of_user(id)
