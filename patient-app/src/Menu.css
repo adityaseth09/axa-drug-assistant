@@ -1,0 +1,27 @@
+.demo-buttons {
+  font-size: 1em;
+  max-width: 1200px;
+  margin: 2em auto 3em;
+  padding: 0 10em;
+}
+.demo-buttons a {
+  text-decoration: none;
+  display: inline-block;
+  margin: 0.75em;
+  padding: 1.35em 1.1em;
+  width: 15em;
+  background: #c94e50;
+  color: #fffce1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 800;
+  border-top-left-radius: 20px 50px;
+  border-top-right-radius: 20px 50px;
+  border-bottom-right-radius: 20px 50px;
+  border-bottom-left-radius: 20px 50px;
+  cursor: pointer;
+}
+.demo-buttons a.current-demo {
+  background: #333333;
+  color: #fffce1;
+}
