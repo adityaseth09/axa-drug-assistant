@@ -19,7 +19,7 @@ api.add_resource(Patient, '/patient/<int:id>')
 api.add_resource(AllergyList, '/patient/<int:id>/allergies')
 api.add_resource(DrugList, '/patient/<int:id>/drugs')
 api.add_resource(ConditionList, '/patient/<int:id>/conditions')
-
+api.add_resource(UserRegister, '/register')
 
 if __name__== '__main__':
     app.run(port=5001, debug=True)
