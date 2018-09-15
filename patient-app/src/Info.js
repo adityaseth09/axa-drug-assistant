@@ -10,7 +10,10 @@ class Info extends Component {
                       conditions: 'loading...',
                       drugs: 'loading...'}
 
-            //api.get_patient('/1').then(function (info) {
+        api.get_patient('/1/allergies').then(info => this.setState({allergies: JSON.stringify(info)})).catch(err => console.log("errx",err))
+        api.get_patient('/1/conditions').then(info => this.setState({conditions: JSON.stringify(info)})).catch(err => console.log("errx",err))
+        api.get_patient('/1/drugs').then(info => this.setState({drugs: JSON.stringify(info)})).catch(err => console.log("errx",err))
+
     //    console.log(info)
     //    //document.getElementById("info_allergies").replaceChild(info.allergies)
     //    console.log("pre",document.getElementById("info_conditions"))
@@ -18,12 +21,12 @@ class Info extends Component {
     //    console.log("post",document.getElementById("info_conditions"))
     //    //document.getElementById("info_drugs").replaceChild(info.drugs)
         //}).catch(err => console.log("err1",err))
-        axa.get_drug('/33124').then(info => {
-            console.log(this)
-            this.setState({allergies: JSON.stringify(info),
-                           conditions: JSON.stringify(info),
-                           drugs: JSON.stringify(info),})
-        }).catch(err => console.log("errx",err))
+        //axa.get_drug('/33124').then(info => {
+        //    console.log(this)
+        //    this.setState({allergies: JSON.stringify(info),
+        //                   conditions: JSON.stringify(info),
+        //                   drugs: JSON.stringify(info),})
+        //}).catch(err => console.log("errx",err))
     }
 
     render () {
