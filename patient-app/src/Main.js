@@ -5,6 +5,7 @@ import Emergency from './Emergency'
 import Login from './Login'
 import Info from './Info'
 import Profile from './Profile'
+import DrugInfo from './DrugInfo'
 import Adherence from './Adherence'
 import { getAccessToken } from './State'
 
@@ -19,6 +20,7 @@ function Main() {
                 <Route path='/information/' component={Info}/>
                 <Route path='/adherence/' component={Adherence}/>
                 <Route path='/profile/' component={Profile}/>
+                <Route path="/drug/:id" component={DrugInfo} />
                 <Route path='/login/' component={Login}/>
               </Switch>
             </main>

@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Link } from 'react-router-dom'
 import Menu from './Menu'
 import api from './API'
 import axa from './AxaApi'
@@ -26,7 +27,7 @@ class Info extends Component {
               <h2>Allergies</h2>
               <div>{ this.state.conditions === null ? "loading ..." : [].concat(this.state.conditions).length === 0 ? (<p>None</p>) : (<ul> { [].concat(this.state.conditions).map(d => ( <li key={"cond-"+d.name}> { d.name }</li> )) }</ul>) }</div>
               <h2>Current Drugs</h2>
-              <div>{ this.state.drugs === null ? "loading ..." : [].concat(this.state.drugs).length === 0 ? (<p>None</p>) : (<ul> { [].concat(this.state.drugs).map(d => ( <li key={"drug-"+d.name}> { d.name }</li> )) }</ul>) }</div>
+                <div>{ this.state.drugs === null ? "loading ..." : [].concat(this.state.drugs).length === 0 ? (<p>None</p>) : (<ul> { [].concat(this.state.drugs).map(d => ( <li key={"drug-"+d.name}><Link to={"/drug/"+d.id}>{ d.name }</Link></li> )) }</ul>) }</div>
             </div>
         )
     }
