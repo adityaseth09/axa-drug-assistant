@@ -314,6 +314,7 @@ class ConditionListAll(Resource):
             for key in ('id', 'name')
         } for cond in Condition.conditions_all()]
 
+
 class UserData(Resource):
     @jwt_required()
     def get(self, username):
