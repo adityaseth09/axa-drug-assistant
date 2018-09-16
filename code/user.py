@@ -232,7 +232,7 @@ class Drug:
     def drugs_all(cls):
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
-        query = "SELECT d.id, d.name, d.emergency FROM drugs"
+        query = "SELECT id, name, emergency FROM drugs"
         result = cursor.execute(query)
         answers = [cls(*row) for row in result.fetchall()]
         connection.close()
