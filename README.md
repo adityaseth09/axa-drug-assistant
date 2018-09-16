@@ -26,6 +26,10 @@ To Create DB on QA/Staging/production
 
 `$ python create_table.py`
 
+## API Documentation
+
+[Documentation Link](https://documenter.getpostman.com/view/229895/RWaKU8v1)
+
 ## Usage
 
 ```
