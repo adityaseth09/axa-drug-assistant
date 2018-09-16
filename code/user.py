@@ -246,7 +246,7 @@ class Drug:
     def drugs_of_user(cls, uid):
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
-        query = "SELECT d.id, d.name FROM drugs d, patient_drugs pd WHERE d.id=pd.drug_id AND pd.patient_id=?"
+        query = "SELECT d.id, d.name, d.emergency FROM drugs d, patient_drugs pd WHERE d.id=pd.drug_id AND pd.patient_id=?"
         result = cursor.execute(query, (uid,))
         answers = [cls(*row) for row in result.fetchall()]
         connection.close()
