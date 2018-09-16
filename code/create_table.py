@@ -7,9 +7,6 @@ cursor =  connection.cursor()
 create_table = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, password TEXT, name TEXT, birthdate TEXT, type_of_user TEXT)"
 cursor.execute(create_table)
 
-create_table = "CREATE TABLE IF NOT EXISTS patients (id INTEGER PRIMARY KEY, name TEXT, birthdate TEXT)"
-cursor.execute(create_table)
-
 create_table = "CREATE TABLE IF NOT EXISTS allergy (id INTEGER PRIMARY KEY, name text)"
 cursor.execute(create_table)
 

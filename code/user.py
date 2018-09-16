@@ -134,10 +134,6 @@ class Patient(Resource):
         if row:
             return {'patient': {'name': row[3],'Birth date': row[4]}}
 
-    def delete(self, id):
-        global patients
-        patients = list(filter(lambda x: x['id'] !=id, patients))
-
 
 class PatientList(Resource):
     def get(self):
@@ -333,9 +329,9 @@ class IsDoctor(Resource):
     def get(self, id):
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
-        query = "SELECT id FROM patients where id=?"
+        query = "SELECT type_of_user from users where id=?"
         result = cursor.execute(query, (id,))
-        row = result.fetchall()
+        row = result.fetchone()
 
         connection.close()
-        return {'answer': True if len(row)>0 else False}
+        return {'answer': row[0]=='doctor'}
