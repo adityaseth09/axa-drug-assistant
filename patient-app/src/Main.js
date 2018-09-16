@@ -7,10 +7,13 @@ import Info from './Info'
 import Profile from './Profile'
 import DrugInfo from './DrugInfo'
 import Adherence from './Adherence'
-import { getAccessToken } from './State'
+import DoctorView from './DoctorView'
+import {getIsDoctor, getAccessToken } from './State'
+
 
 function Main() {
-    if (getAccessToken() !== null) {
+
+    if (getAccessToken() !== null &&!getIsDoctor()) {
         return (
             <main>
               <Switch>
@@ -24,13 +27,20 @@ function Main() {
               </Switch>
             </main>
         )
-    } else {
+    } else if(getAccessToken() !== null && getIsDoctor()) {
         return (
             <main>
-            <Login/>
+                <Route exact path='/' component={DoctorView}/>
             </main>
         )
+    } else{
+            return (
+                <main>
+                    <Login/>
+                </main>
+            )
     }
+
 }
 
 export default Main
