@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { getAccessToken, setUserID } from './State'
+import { getAccessToken, setUserID, setIsDoctor } from './State'
 
 import api from './API.js'
 
@@ -27,8 +27,10 @@ class LoginForm extends React.Component {
             console.log("access token:", getAccessToken())
             api.get("/getuserid/" + this.state.name).then(ans => {
                 setUserID(ans.data.id)
-                setUserID(ans.data.id)
-                document.getElementById("goto_home").click()
+                api.get("/isdoctor/" + ans.data.id).then(ans => {
+                    setIsDoctor(ans.data.answer)
+                    document.getElementById("goto_home").click()
+                })
             })
         })
         event.preventDefault()

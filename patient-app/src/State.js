@@ -16,14 +16,14 @@ export function setUserID(id) {
     state.userid = id
 }
 
-export function getUserID(id) {
+export function getUserID() {
     return state.userid
 }
 
-export function setRole(id) {
-    state.userid = id
+export function setIsDoctor(x) {
+    state.isDoctor = x
 }
 
-export function getUserRole(id) {
-    return state.userid
+export function getIsDoctor() {
+    return state.isDoctor
 }
