@@ -16,9 +16,24 @@ function get(url) {
     });
 }
 
+function post(url) {
+    return axios.post("https://health.axa.ch/hack/api" + url, {},
+                      {
+                          headers: {
+                              'Content-Type': 'application/json',
+                              'Authorization': 'stupid space',
+                              'Accept-Language': 'de',
+                          },
+                          crossdomain: true,
+                      }).catch(function(error) {
+        console.log(url, error);
+    });
+}
+
+
 function get_drug(url) {
     return get("/drugs" + url)
 }
 
 
-export default {get: get, get_drug: get_drug}
+export default {get: get, get_drug: get_drug, post: post}
