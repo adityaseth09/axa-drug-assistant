@@ -110,7 +110,6 @@ class UserRegister(Resource):
                }, 201
 
 
-
 class Patient(Resource):
     @jwt_required()
     def get(self, id):

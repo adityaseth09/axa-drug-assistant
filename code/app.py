@@ -1,3 +1,4 @@
+import datetime
 from flask import Flask, request
 from flask_restful import Resource, Api
 from flask_jwt import JWT, jwt_required
@@ -12,7 +13,9 @@ app = Flask(__name__)
 app.secret_key = 'hellohack'
 api = Api(app)
 CORS(app)
+app.config['JWT_EXPIRATION_DELTA'] = datetime.timedelta(seconds=1800)
 jwt = JWT(app, authenticate, identity)  # /auth
+
 
 api.add_resource(PatientList, '/patients')
 api.add_resource(Patient, '/patient/<int:id>')
