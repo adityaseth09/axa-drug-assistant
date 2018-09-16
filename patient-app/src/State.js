@@ -19,3 +19,11 @@ export function setUserID(id) {
 export function getUserID(id) {
     return state.userid
 }
+
+export function setRole(id) {
+    state.userid = id
+}
+
+export function getUserRole(id) {
+    return state.userid
+}

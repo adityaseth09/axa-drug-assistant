@@ -27,6 +27,7 @@ class LoginForm extends React.Component {
             console.log("access token:", getAccessToken())
             api.get("/getuserid/" + this.state.name).then(ans => {
                 setUserID(ans.data.id)
+                setUserID(ans.data.id)
                 document.getElementById("goto_home").click()
             })
         })

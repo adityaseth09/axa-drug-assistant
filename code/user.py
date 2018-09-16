@@ -326,3 +326,16 @@ class UserData(Resource):
 
         connection.close()
         return {'id':row[0]}
+
+
+class IsDoctor(Resource):
+    @jwt_required()
+    def get(self, id):
+        connection = sqlite3.connect('data.db')
+        cursor = connection.cursor()
+        query = "SELECT id FROM patients where id=?"
+        result = cursor.execute(query, (id,))
+        row = result.fetchall()
+
+        connection.close()
+        return {'answer': True if len(row)>0 else False}

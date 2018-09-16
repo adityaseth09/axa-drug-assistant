@@ -10,7 +10,6 @@ import Adherence from './Adherence'
 import { getAccessToken } from './State'
 
 function Main() {
-    console.log("[main] access token:",getAccessToken())
     if (getAccessToken() !== null) {
         return (
             <main>
