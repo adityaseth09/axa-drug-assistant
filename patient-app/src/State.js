@@ -11,3 +11,11 @@ export function setAccessToken(text) {
 export function getAccessToken() {
     return state.access_token
 }
+
+export function setUserID(id) {
+    state.userid = id
+}
+
+export function getUserID(id) {
+    return state.userid
+}

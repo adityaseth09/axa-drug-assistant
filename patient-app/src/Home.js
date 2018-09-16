@@ -7,7 +7,7 @@ function Score() {
     const good = value >= 0.5
     const good_texts = [
         "Things work out best for those who make the best of how things work out",
-        "To live a creative life, you must lose bad habitswrong",
+        "To live a creative life, you must lose bad habits",
         "Good health doesn't just happen, you enable it",
         "Success is liking yourself, and to like yourself, you gotta take care of you.",
         "everything cometh to him who taketh his drugs on time",
@@ -43,8 +43,8 @@ class Home extends Component {
         return (<div>
                   <Score/>
                   <Menu menuItems={[
-                      {name: 'Filler', action:'/filler/'},
-                      {name: 'Information', action:'/information/'},
+                      {name: 'Medical Info', action:'/information/'},
+                      {name: 'Profile', action:'/profile/'},
                       {name: 'Adherence', action:'/adherence/'},
                       {name: 'Emergency', action:'/emergency/'}]}/>
                 </div>

@@ -4,7 +4,7 @@ import Menu from './Menu'
 const Adherence = () => (
         <div>
         <Menu/>
-        <p>Adherence</p>
+        <p>Please start a video call with your doctor.</p>
         </div>
 )
 
