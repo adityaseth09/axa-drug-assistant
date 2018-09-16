@@ -76,6 +76,7 @@ class UserRegister(Resource):
                         help="This field cannot be blank."
                         )
 
+    @jwt_required()
     def post(self):
         data = UserRegister.parser.parse_args()
 
@@ -245,7 +246,7 @@ class Drug:
     def drugs_of_user(cls, uid):
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
-        query = "SELECT d.id, d.name, d.emergency FROM drugs d, patient_drugs pd WHERE d.id=pd.drug_id AND pd.patient_id=?"
+        query = "SELECT d.id, d.name FROM drugs d, patient_drugs pd WHERE d.id=pd.drug_id AND pd.patient_id=?"
         result = cursor.execute(query, (uid,))
         answers = [cls(*row) for row in result.fetchall()]
         connection.close()
@@ -312,3 +313,15 @@ class ConditionListAll(Resource):
             key: getattr(cond, key)
             for key in ('id', 'name')
         } for cond in Condition.conditions_all()]
+
+class UserData(Resource):
+    @jwt_required()
+    def get(self, username):
+        connection = sqlite3.connect('data.db')
+        cursor = connection.cursor()
+        query = "SELECT id FROM users where username=?"
+        result = cursor.execute(query, (username,))
+        row = result.fetchone()
+
+        connection.close()
+        return {'id':row[0]}
