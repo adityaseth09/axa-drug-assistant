@@ -26,4 +26,4 @@ api.add_resource(UserRegister, '/register')
 api.add_resource(UserData, '/getuserid/<string:username>')
 
 if __name__== '__main__':
-    app.run(port=5001, debug=True)
+    app.run('0.0.0.0', port=5005, debug=False)
